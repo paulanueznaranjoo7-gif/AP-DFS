@@ -1,0 +1,42 @@
+
+def dfs(G, v, visitados, recorrido): #mediante recursividad
+
+    visitados.add(v)
+    recorrido.append(v)
+    
+    for node in G[v]: #recorro los vertices actual de v
+        #lo primero que hago en la funcion es marcar el vertice actual como visitado
+        
+        print(G[v][-1])
+        
+        if node not in visitados:
+            dfs(G, node, visitados, recorrido)
+            
+            
+
+        
+        
+        
+    
+
+
+def main():
+    G = {
+        0: [1, 2],
+        1: [3, 4],
+        2: [4],
+        3: [],
+        4: [5],
+        5: []
+    }
+
+    visitados = set()
+    recorrido = []
+
+    dfs(G, 0, visitados, recorrido)
+
+    print("Recorrido DFS:", recorrido)
+
+
+if __name__ == "__main__":
+    main()
