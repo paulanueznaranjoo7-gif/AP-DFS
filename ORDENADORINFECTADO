@@ -1,0 +1,32 @@
+def contar_infectados(G, actual, visitados):
+   
+    contador =1
+    visitados.add(actual)
+   
+    for ordenador in G[actual]:
+        if ordenador not in visitados: #como no tiene vecinos no entra
+            contador += contar_infectados(G, ordenador, visitados)
+            contar_infectados(G, ordenador, visitados)
+    return contador
+
+def main():
+
+    red = {
+        0: [1, 3],
+        1: [0, 2, 4],
+        2: [1, 5],
+        3: [0],
+        4: [1],
+        5: [2],
+        6: []
+    }
+
+    visitados = set()
+
+    total = contar_infectados(red, 0, visitados)
+
+    print("Ordenadores infectados:", total)
+
+
+if __name__ == "__main__":
+    main()
