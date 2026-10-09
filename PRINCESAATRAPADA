@@ -1,0 +1,22 @@
+def buscar_princesa(G, actual, destino, bloqueadas, visitados):
+
+    #habitacion se comvierte en el nuevo actual cunaod entramos en llamada
+    if actual in bloqueadas:
+        return False
+    
+    if actual == destino:
+        return True
+    
+    
+    visitados.add(actual) #aqui no pondria lo del true porque terminaria solo est lamada no las anteriores
+    
+    for habitacion in G[actual]:
+        if habitacion in bloqueadas:
+            continue
+        elif habitacion not in visitados:
+            if buscar_princesa(G, habitacion, destino, bloqueadas, visitados):
+                return True
+            #YO METI ACYUAL Y NO PUEDE SER PRQUE CTAUL ES 0 Y ME DA ERIRR DE RECURSION VARIAS VECES
+            
+    
+    return False
